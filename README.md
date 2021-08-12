@@ -1,7 +1,8 @@
 # Ratings-Reviews
 API for ratings and reviews widget
 
-ETL proccess:
+ETL process:
+
 Download CSV from Google Drive
 Split CSV into text doc per 100,000 rows (split -l 100000 reviews.csv)
 Move text docs to .csv (for i in *; do mv "$i" "$i.csv"; done)
