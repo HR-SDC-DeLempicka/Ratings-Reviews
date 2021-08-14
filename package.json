@@ -1,0 +1,30 @@
+{
+  "name": "ratings-reviews",
+  "version": "1.0.0",
+  "description": "API for ratings and reviews widget",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HR-SDC-DeLempicka/Ratings-Reviews.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HR-SDC-DeLempicka/Ratings-Reviews/issues"
+  },
+  "homepage": "https://github.com/HR-SDC-DeLempicka/Ratings-Reviews#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "postgresql": "0.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
