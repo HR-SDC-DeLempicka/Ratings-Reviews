@@ -44,6 +44,19 @@ module.exports = {
         callback(null);
       }
     });
+  },
+
+  updateReviewReported: function(id, callback) {
+    console.log(id);
+    return pool.query(`UPDATE rate_review.reviews SET reported = true
+    WHERE id = ${id}`, err => {
+      if (err) {
+        console.log('DATABASE ERROR; ', err);
+        callback(err);
+      } else {
+        callback(null);
+      }
+    })
   }
 
 }

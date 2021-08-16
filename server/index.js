@@ -42,7 +42,19 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
       res.send('UPDATED!');
     }
   })
-})
+});
+
+app.put('/reviews/:review_id/report', (req, res) => {
+  req.params.review_id = 1;
+  db.updateReviewReported(req.params.review_id, err => {
+    if (err) {
+      console.log('SERVER ERROR: ', err);
+    } else {
+      console.log('Reported');
+      res.send('REPORTED!')
+    }
+  })
+});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
