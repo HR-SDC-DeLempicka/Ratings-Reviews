@@ -17,20 +17,33 @@ module.exports = {
       } else {
         callback(null, result.rows);
       }
-    })
+    });
   },
 
   getReviewsMeta: function(id, callback) {
     return pool.query( `SELECT c.product_id, c.name_of, cr.value_of, cr.id, r.rating,
     r.id, r.recommend FROM rate_review.characteristics AS c INNER JOIN
     rate_review.characteristic_reviews AS cr ON c.id = cr.characteristic_id
-    LEFT JOIN rate_review.reviews AS r ON r.id = cr.review_id WHERE c.product_id=${id} limit 2`, (err, result) => {
+    INNER JOIN rate_review.reviews AS r ON r.id = cr.review_id WHERE c.product_id=${id}`, (err, result) => {
       if (err) {
         console.log('ERROR FROM DB: ', err)
       } else {
         callback(null, result.rows);
       }
-    })
+    });
+  },
+
+  updateReviewHelpful: function(id, callback) {
+    console.log(id);
+    return pool.query(`UPDATE rate_review.reviews SET helpfulness =
+    helpfulness + 1 WHERE id = ${id}`, err => {
+      if (err) {
+        console.log('DATABASE ERROR; ', err);
+        callback(err);
+      } else {
+        callback(null);
+      }
+    });
   }
 
 }
