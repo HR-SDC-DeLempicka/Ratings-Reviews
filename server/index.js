@@ -11,7 +11,7 @@ app.use(compression());
 // app.use(express.static(path.join(__dirname, '..', '')));
 
 app.get('/reviews', (req, res) => {
-  req.header.id = 17132;
+  req.header.id = 17244;
   db.getReviews(req.header.id, (err, results) => {
     if (err) {
       console.log('SERVER ERROR: ', err);
@@ -22,7 +22,7 @@ app.get('/reviews', (req, res) => {
 });
 
 app.get('/reviews/meta', (req, res) => {
-  req.header.id = 17121;
+  req.header.id = 17126;
   db.getReviewsMeta(req.header.id, (err, result) => {
     if (err) {
       console.log('SERVER ERROR; ', err);
@@ -55,6 +55,18 @@ app.put('/reviews/:review_id/report', (req, res) => {
     }
   })
 });
+
+app.post('/reviews', (req, res) => {
+
+  db.addReview(req.body, err => {
+    if (err) {
+      console.log('SERVER ERROR: ', err);
+    } else {
+      console.log('REVIEW ADDED!');
+      res.send('REVIEW ADDED!');
+    }
+  })
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
