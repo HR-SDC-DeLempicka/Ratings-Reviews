@@ -20,17 +20,6 @@ module.exports = {
     });
   },
 
-  //USE SCP TO UPLOAD CSV'S TO AWS
-
-    // ` SELECT reviews.id AS review_id, reviews.rating, reviews.date_of, reviews.summary,
-    // reviews.body, reviews.recommend, reviews.reviewer_name, reviews.response, reviews.helpfulness,
-    // json_agg(json_build_object('id', rate_review.reviews_photos.id, 'url', rate_review.reviews_photos.url_Of)) AS photos FROM rate_review.reviews LEFT JOIN
-    // rate_review.reviews_photos ON rate_review.reviews_photos.review_p_id = reviews.id
-    // WHERE
-    // reviews.product_id = ${id} AND reviews.reported = false
-    // GROUP BY
-    // reviews.id;
-    // `
 
   getReviewsMeta: function(id, callback) {
     return pool.query(  `SELECT c.product_id, c.name_of, cr.value_of, cr.id, r.rating,
@@ -44,28 +33,6 @@ module.exports = {
       }
     });
   },
-
-
-
-
-
-  // `WITH char_ins AS (
-  //   SELECT c.product_id, c.name_of
-  //   FROM rate_review.characteristics AS c
-  //   WHERE c.product_id = ${id} RETURNING c.id
-  //   ),
-  //   char_review_ins AS (
-  //     SELECT cr.value_of, cr.review_id, cr._characteristic_id
-  //     FROM rate_review.characteristic_reviews AS cr
-  //     WHERE c.id = cr.characteristic_id
-  //     RETURNING cr.review_id AS cr.r_id
-  //   ),
-  //   review_ins AS (
-  //     SELECT r.recommend, r.rating, r.product_id FROM
-  //     rate_review.reviews AS r
-  //     WHERE r.id = cr.r_id
-  //   )`
-  // )`
 
   updateReviewHelpful: function(id, callback) {
     console.log(id);
