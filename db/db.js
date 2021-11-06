@@ -1,7 +1,5 @@
-const { Pool } = require('pg');
-const {options} = require('../config.js');
-const pool = new Pool(options);
-console.log(options);
+const { pool } = require('./index.js');
+
 module.exports = {
 
   getReviews: function(id, callback) {
