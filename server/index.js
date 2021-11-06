@@ -10,6 +10,8 @@ app.use(express.json());
 app.use(compression());
 // app.use(express.static(path.join(__dirname, '..', '')));
 
+
+
 app.get('/reviews', (req, res) => {
   req.header.id = 17244;
   db.getReviews(req.header.id, (err, results) => {
@@ -22,7 +24,7 @@ app.get('/reviews', (req, res) => {
 });
 
 app.get('/reviews/meta', (req, res) => {
-  req.header.id = 17136;
+  req.header.id = 17132;
   db.getReviewsMeta(req.header.id, (err, result) => {
     if (err) {
       console.log('SERVER ERROR; ', err);
