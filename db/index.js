@@ -1,6 +1,6 @@
-const { Pool } = require('pg');
-const {options} = require('../config.js');
+const pgp = require('pg');
+const { options } = require('../config.js');
 
-const pool = new Pool(options);
+const db = pgp(options);
 
-module.exports = pool;
+module.exports = db;

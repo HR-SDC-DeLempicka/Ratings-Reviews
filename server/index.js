@@ -50,29 +50,29 @@ app.listen(port, () => {
 //   })
 // });
 
-app.put('/reviews/:review_id/helpful', (req, res) => {
-  req.params.review_id = 1;
-  db.updateReviewHelpful( req.params.review_id, err => {
-    if (err) {
-      console.log('SERVER ERROR: ', err);
-    } else {
-      console.log('Updated review!');
-      res.send('UPDATED!');
-    }
-  })
-});
+// app.put('/reviews/:review_id/helpful', (req, res) => {
+//   req.params.review_id = 1;
+//   db.updateReviewHelpful( req.params.review_id, err => {
+//     if (err) {
+//       console.log('SERVER ERROR: ', err);
+//     } else {
+//       console.log('Updated review!');
+//       res.send('UPDATED!');
+//     }
+//   })
+// });
 
-app.put('/reviews/:review_id/report', (req, res) => {
-  req.params.review_id = 1;
-  db.updateReviewReported(req.params.review_id, err => {
-    if (err) {
-      console.log('SERVER ERROR: ', err);
-    } else {
-      console.log('Reported');
-      res.send('REPORTED!')
-    }
-  })
-});
+// app.put('/reviews/:review_id/report', (req, res) => {
+//   req.params.review_id = 1;
+//   db.updateReviewReported(req.params.review_id, err => {
+//     if (err) {
+//       console.log('SERVER ERROR: ', err);
+//     } else {
+//       console.log('Reported');
+//       res.send('REPORTED!')
+//     }
+//   })
+// });
 
 app.post('/reviews', (req, res) => {
 

@@ -1,9 +1,9 @@
-const { pool } = require('../../db');
+const { db } = require('../../db');
 
 module.exports = {
 
-  updateReviewHelpful: function(id, callback) {
-    return pool.query(`UPDATE rate_review.reviews SET helpfulness =
+  updateReviewHelpful: async (id, callback) => {
+    return db.query(`UPDATE rate_review.reviews SET helpfulness =
     helpfulness + 1 WHERE id = ${id}`, err => {
       if (err) {
         console.log('DATABASE ERROR; ', err);
@@ -15,7 +15,7 @@ module.exports = {
   },
 
   updateReviewReported: function(id, callback) {
-    return pool.query(`UPDATE rate_review.reviews SET reported = true
+    return db.query(`UPDATE rate_review.reviews SET reported = true
     WHERE id = ${id}`, err => {
       if (err) {
         console.log('DATABASE ERROR: ', err);
