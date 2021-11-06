@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const router = require('./routes.js');
-
+const Router = express.Router();
 const port = 3000;
 const auth = require('../config.js');
 const compression = require('compression');

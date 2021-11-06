@@ -2,8 +2,8 @@ const { db } = require('../../db');
 
 
 module.exports = {
-  reviews: function(id, callback) {
-    return db.query( `SELECT r.id AS review_id, r.product_id AS product_id, r.rating AS rating,
+  reviews: async (id, callback) => {
+    let result = db.query( `SELECT r.id AS review_id, r.product_id AS product_id, r.rating AS rating,
     r.date_of AS date_of, r.summary AS summary, r.body AS body, r.recommend AS
     recommend, r.reported AS reported, r.reviewer_name AS reviewer_name,
     r.reviewer_email AS reviewer_email, r.response AS response, r.helpfulness
