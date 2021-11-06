@@ -23,6 +23,6 @@ module.exports = {
       } else {
         callback(null);
       }
-    })
-  }
+    });
+  },
 }
