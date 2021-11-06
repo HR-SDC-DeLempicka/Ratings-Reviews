@@ -1,6 +1,5 @@
 const { db } = require('../../db');
 
-
 module.exports = {
   reviews: async (id) => {
     try {
@@ -25,7 +24,7 @@ module.exports = {
       LEFT JOIN rate_review.reviews_photos AS p
       ON p.review_p_id = r.id
       WHERE r.product_id = ${id}`);
-    return `Successfully updated ID: ${id}`;
+    return result;
     } catch(err) {
       console.log(err);
       return err;
@@ -37,13 +36,10 @@ module.exports = {
       r.id, r.recommend FROM rate_review.characteristics AS c INNER JOIN
       rate_review.characteristic_reviews AS cr ON c.id = cr.characteristic_id
       INNER JOIN rate_review.reviews AS r ON r.id = cr.review_id WHERE c.product_id=${id} LIMIT 5`);
-      return `Successfully updated ID: ${id}`
+      return result;
     } catch(err) {
       console.log(err);
       return err;
     }
   }
 };
-
-
-
