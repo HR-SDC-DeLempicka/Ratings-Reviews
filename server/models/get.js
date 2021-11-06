@@ -32,10 +32,26 @@ module.exports = {
   },
   reviewsMeta: async (id) => {
     try {
-      let result = await db.query(  `SELECT c.product_id, c.name_of, cr.value_of, cr.id, r.rating,
-      r.id, r.recommend FROM rate_review.characteristics AS c INNER JOIN
-      rate_review.characteristic_reviews AS cr ON c.id = cr.characteristic_id
-      INNER JOIN rate_review.reviews AS r ON r.id = cr.review_id WHERE c.product_id=${id} LIMIT 5`);
+      let result = await db.query(`
+      SELECT
+        c.product_id,
+        c.name_of,
+        cr.value_of,
+        cr.id,
+        r.rating,
+        r.id,
+        r.recommend
+      FROM
+        rate_review.characteristics
+      AS c
+      INNER JOIN
+        rate_review.characteristic_reviews AS cr
+      ON c.id = cr.characteristic_id
+      INNER JOIN
+        rate_review.reviews AS r
+      ON r.id = cr.review_id
+      WHERE
+        c.product_id=${id} LIMIT 5`);
       return result;
     } catch(err) {
       console.log(err);
