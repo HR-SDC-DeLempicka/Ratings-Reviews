@@ -1,11 +1,9 @@
 const express = require('express');
 const app = express();
-const router = require('./routes.js');
 const Router = express.Router();
+const router = require('./routes.js');
 const port = 3000;
-const auth = require('../config.js');
 const compression = require('compression');
-// const db = require('../db/db.js');
 app.use(express.json());
 app.use(compression());
 app.use((req, res, next) => {
@@ -21,14 +19,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api', router);
+app.use('/', router);
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Listening at http://localhost:${port}`)
 });
 
 // app.post('/reviews', (req, res) => {
-
 //   db.addReview(req.body, err => {
 //     if (err) {
 //       console.log('SERVER ERROR: ', err);

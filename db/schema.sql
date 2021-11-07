@@ -60,16 +60,12 @@ DELIMITER ',' CSV HEADER;
 -- CREATE INDEX review_pidx ON rate_review.reviews_photos(review_id);
 
 
-CREATE INDEX reviews_complete ON rate_review.reviews (product_id) INCLUDE
+CREATE INDEX reviews_complete ON reviews (product_id) INCLUDE
 (id, rating, date_of, summary, body, recommend, reviewer_name, reviewer_email, response, helpfulness);
-CREATE INDEX photos_complete ON rate_review.reviews_photos (review_p_id) INCLUDE
+CREATE INDEX photos_complete ON reviews_photos (review_p_id) INCLUDE
 (id, url_of);
-CREATE INDEX characteristics_complete ON rate_review.characteristics (product_id) INCLUDE
+CREATE INDEX characteristics_complete ON characteristics (product_id) INCLUDE
 (id, name_of);
-CREATE INDEX characteristic_reviews_complete ON rate_review.characteristic_reviews (characteristic_id)
+CREATE INDEX characteristic_reviews_complete ON characteristic_reviews (characteristic_id)
 INCLUDE (id, review_id, value_of);
-CREATE INDEX reviews_rec_complete ON rate_review.reviews (product_id) INCLUDE (id, recommend);
-
-
-
-/* I believe this is the command to load schema into database: sudo -u postgres psql < schema.sql */
+-- CREATE INDEX reviews_rec_complete ON reviews (product_id) INCLUDE (id, recommend);

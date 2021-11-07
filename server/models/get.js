@@ -1,4 +1,4 @@
-const { db } = require('../../db');
+const db= require('../../db');
 
 module.exports = {
   reviews: async (id) => {
@@ -20,8 +20,8 @@ module.exports = {
         p.id AS photo_id,
         p.review_p_id AS photo_review_id,
         p.url_Of AS url_of
-      FROM rate_review.reviews AS r
-      LEFT JOIN rate_review.reviews_photos AS p
+      FROM reviews AS r
+      LEFT JOIN reviews_photos AS p
       ON p.review_p_id = r.id
       WHERE r.product_id = ${id}`);
     return result;
@@ -42,13 +42,13 @@ module.exports = {
         r.id,
         r.recommend
       FROM
-        rate_review.characteristics
+        characteristics
       AS c
       INNER JOIN
-        rate_review.characteristic_reviews AS cr
+        characteristic_reviews AS cr
       ON c.id = cr.characteristic_id
       INNER JOIN
-        rate_review.reviews AS r
+        reviews AS r
       ON r.id = cr.review_id
       WHERE
         c.product_id=${id} LIMIT 5`);
